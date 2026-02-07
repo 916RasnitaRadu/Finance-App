@@ -13,6 +13,8 @@ module.exports = {
         lightBlue: "hsl(215.02, 98.39%, 51.18%)",
         darkBlue: "hsl(213.86, 58.82%, 46.67%)",
         lightGreen: "hsl(156.62, 73.33%, 58.82%)",
+        veryDarkViolet: "#2d1b69",
+        veryDarkBlue: "#1f2937",
       },
       fontFamily: {
         sans: ["Poppins", "sans-serif"],
