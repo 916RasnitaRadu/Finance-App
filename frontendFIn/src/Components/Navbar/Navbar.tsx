@@ -12,7 +12,7 @@ const Navbar = (props: Props) => {
                 <Link to="/">
                     <img src={logo} alt="" />
                 </Link>
-                <div className="hidden font-bold lg:flex">
+                <div className="hidden font-bold gap-6 lg:flex">
                     <Link to="/search" className="text-black hover:text-darkBlue">
                         Search
                     </Link>

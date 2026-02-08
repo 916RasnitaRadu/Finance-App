@@ -59,7 +59,7 @@ export interface CompanyKeyRatios {
   daysOfSalesOutstandingTTM: number;
   daysOfInventoryOutstandingTTM: number;
   operatingCycleTTM: number;
-  daysOfPayablesOutstandingTTM: number;
+  daysOfPayablesOutstandingTTM: number; 
   cashConversionCycleTTM: number;
   grossProfitMarginTTM: number;
   operatingProfitMarginTTM: number;
@@ -245,6 +245,90 @@ export interface CompanyCashFlow {
   operatingCashFlow: number;
   capitalExpenditure: number;
   freeCashFlow: number;
+  link: string;
+  finalLink: string;
+}
+
+
+export interface CompanyKeyMetrics {
+  symbol: string;
+  revenuePerShareTTM: number;
+  netIncomePerShareTTM: number;
+  operatingCashFlowPerShareTTM: number;
+  freeCashFlowPerShareTTM: number;
+  cashPerShareTTM: number;
+  bookValuePerShareTTM: number;
+  tangibleBookValuePerShareTTM: number;
+  shareholdersEquityPerShareTTM: number;
+  interestDebtPerShareTTM: number;
+  marketCap: number; //
+  enterpriseValueTTM: number; //
+  evToSalesTTM: number; //
+  enterpriseValueOverEBITDATTM: number;
+  evToOperatingCashFlowTTM: number; // 
+  evToFreeCashFlowTTM: number; // 
+  earningsYieldTTM: number;
+  freeCashFlowToEquityTTM: number; // 
+  netDebtToEBITDATTM: number; // 
+  currentRatioTTM: number; //
+  interestCoverageTTM: number;
+  incomeQualityTTM: number; // 
+  salesGeneralAndAdministrativeToRevenueTTM: number; //
+  researchAndDevelopementToRevenueTTM: number; //
+  intangiblesToTotalAssetsTTM: number; //
+  capexToOperatingCashFlowTTM: number; //
+  capexToRevenueTTM: number; //
+  capexToDepreciationTTM: number; //
+  stockBasedCompensationToRevenueTTM: number; //
+  grahamNumberTTM: number; //
+  returnOnTangibleAssetsTTM: number; //
+  grahamNetNetTTM: number; // 
+  workingCapitalTTM: number; // 
+  tangibleAssetValueTTM: number;
+  netCurrentAssetValueTTM: number;
+  investedCapitalTTM: number; // 
+  averageReceivablesTTM: number; //
+  averagePayablesTTM: number; //
+  averageInventoryTTM: number; //
+  daysSalesOutstandingTTM: number; //
+  daysPayablesOutstandingTTM: number; //
+  daysOfInventoryOutstandingTTM: number; //
+  evToEBITDATTM: number; //
+  taxBurdenTTM: number; //
+  interestBurdenTTM: number; //
+  daysOfPayablesOutstandingTTM: number; //
+  freeCashFlowToFirmTTM: number; //
+  operatingReturnOnAssetsTTM: number; //
+  returnOnAssetsTTM: number; //
+  returnOnEquityTTM: number;
+}
+
+export interface CompanyHistoricalDividend {
+  symbol: string;
+  historical: Dividend[];
+}
+
+export interface Dividend {
+  date: string;
+  label: string;
+  adjDividend: number;
+  dividend: number;
+  recordDate: string;
+  paymentDate: string;
+  declarationDate: string;
+}
+
+export interface CompanyCompData {
+  symbol: string;
+  peersList: string[];
+}
+
+export interface CompanyTenK {
+  symbol: string;
+  fillingDate: string;
+  acceptedDate: string;
+  cik: string;
+  type: string;
   link: string;
   finalLink: string;
 }
