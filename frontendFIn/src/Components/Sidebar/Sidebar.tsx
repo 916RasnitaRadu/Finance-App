@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom"
 import { FaHome } from "react-icons/fa"
 import { IoMdPaper } from "react-icons/io";
+import { IoMdCash } from "react-icons/io";
 
 interface Props {}
 
@@ -26,6 +27,20 @@ const Sidebar = (props: Props) => {
                     className="flex md:min-w-full text-blueGray-500 text-medium uppercase font-bold block pt-1 pb-4 no-underline">
                         <IoMdPaper />
                         <h6 className="ml-3">Income Statement</h6>  
+                </Link>
+
+                <Link
+                    to="balance-sheet"
+                    className="flex md:min-w-full text-blueGray-500 text-medium uppercase font-bold block pt-1 pb-4 no-underline">
+                        <IoMdPaper />
+                        <h6 className="ml-3">Balance Sheet</h6>  
+                </Link>
+                
+                <Link
+                    to="cashflow-statement"
+                    className="flex md:min-w-full text-blueGray-500 text-medium uppercase font-bold block pt-1 pb-4 no-underline">
+                    <IoMdCash />
+                    <h6 className="ml-3">Cashflow Statement</h6>
                 </Link>
             </div>
             </div>

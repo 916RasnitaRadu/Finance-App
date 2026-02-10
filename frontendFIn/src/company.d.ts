@@ -142,7 +142,7 @@ export interface CompanyIncomeStatement {
   netIncome: number;
   netIncomeRatio: number;
   eps: number;
-  epsdiluted: number;
+  epsDiluted: number;
   weightedAverageShsOut: number;
   weightedAverageShsOutDil: number;
   link: string;
@@ -231,13 +231,13 @@ export interface CompanyCashFlow {
   purchasesOfInvestments: number;
   salesMaturitiesOfInvestments: number;
   otherInvestingActivites: number;
-  netCashUsedForInvestingActivites: number;
+  netCashProvidedByInvestingActivities: number;
   debtRepayment: number;
-  commonStockIssued: number;
+  commonStockIssuance: number;
   commonStockRepurchased: number;
   dividendsPaid: number;
   otherFinancingActivites: number;
-  netCashUsedProvidedByFinancingActivities: number;
+  netCashProvidedByFinancingActivities: number;
   effectOfForexChangesOnCash: number;
   netChangeInCash: number;
   cashAtEndOfPeriod: number;
@@ -257,7 +257,6 @@ export interface CompanyKeyMetrics {
   operatingCashFlowPerShareTTM: number;
   freeCashFlowPerShareTTM: number;
   cashPerShareTTM: number;
-  bookValuePerShareTTM: number;
   tangibleBookValuePerShareTTM: number;
   shareholdersEquityPerShareTTM: number;
   interestDebtPerShareTTM: number;
@@ -320,7 +319,9 @@ export interface Dividend {
 
 export interface CompanyCompData {
   symbol: string;
-  peersList: string[];
+  companyName: string;
+  price: number;
+  mktCap: number;
 }
 
 export interface CompanyTenK {

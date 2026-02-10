@@ -1,5 +1,5 @@
 import type { CompanyKeyMetrics } from "../../company";
-import { formatLargeNonMonetaryNumber, formatRatio } from "../../Helpers/NumberFormat";
+import { formatLargeMonetaryNumber, formatLargeNonMonetaryNumber, formatRatio } from "../../Helpers/NumberFormat";
 
 export const tableConfig = [
     {
@@ -31,16 +31,9 @@ export const tableConfig = [
     {
         label: "Free Cashflow To Equity",
         render: (company: CompanyKeyMetrics) =>
-            formatRatio(company.freeCashFlowToEquityTTM),
+            formatLargeMonetaryNumber(company.freeCashFlowToEquityTTM),
         subTitle:
             "Return on assets is the measure of how effective a company is using its assets",
-    },
-    {
-        label: "Book Value Per Share TTM",
-        render: (company: CompanyKeyMetrics) =>
-            formatRatio(company.bookValuePerShareTTM),
-        subTitle:
-            "Book value per share indicates a firm's net asset value (total assets - total liabilities) on per share basis",
     },
     {
         label: "Stock Based Compensation to Revenue TTM",

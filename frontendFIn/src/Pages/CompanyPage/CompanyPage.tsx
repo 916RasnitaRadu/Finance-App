@@ -5,13 +5,14 @@ import { getCompanyProfile } from "../../api"
 import Sidebar from "../../Components/Sidebar/Sidebar"
 import CompanyDashboard from "../../Components/CompanyDashboard/CompanyDashboard"
 import Tile from "../../Components/Tile/Tile"
+import Spinner from "../../Components/Spinner/Spinner"
 
 interface Props {}
 
 const CompanyPage = (props: Props) => {
-
     let { ticker } = useParams()
     const [company, setCompany] = useState<CompanyProfile>();
+    const [showDescription, setShowDescription] = useState<boolean>(false);
 
     useEffect(() => {
         const getProfileInit = async () => {
@@ -31,11 +32,29 @@ const CompanyPage = (props: Props) => {
           
                 <CompanyDashboard ticker={ticker!}>
                     <Tile title="Company Name" subTitle={company.companyName}/>
+                    <Tile title="Price" subTitle={company.price.toString()}/>
+                    <Tile title="Sector" subTitle={company.sector}/>
+                    <Tile title="CEO" subTitle={company.ceo}/>
+
+                    <div className="bg-white shadow rounded p-4 mt-1 m-4">
+                        <button
+                            onClick={() => { setShowDescription(prev => !prev) }}
+                            className="text-sm font-medium hover:underline mb-3"
+                        >
+                            {showDescription ? "Hide description ▲" : "Show description ▼"}
+                        </button>
+
+                        {showDescription && (
+                            <p className="text-medium text-gray-900">
+                                {company.description}
+                            </p>
+                        )}
+                    </div>
                 </CompanyDashboard>
 
             </div>
         ) : (
-            <div>Company not found</div>
+            <Spinner />
         )}
     </>
   )
