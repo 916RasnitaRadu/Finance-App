@@ -24,7 +24,9 @@ const BalanceSheet = (props: Props) => {
     return (
         <>
             {balanceSheet ? (
-                <RatioList config={config} data={balanceSheet} />
+                <div className="w-full">
+                    <RatioList config={config} data={balanceSheet} />
+                </div>
             ) : (
                 <Spinner />
             )}

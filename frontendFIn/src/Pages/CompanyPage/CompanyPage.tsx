@@ -6,6 +6,7 @@ import Sidebar from "../../Components/Sidebar/Sidebar"
 import CompanyDashboard from "../../Components/CompanyDashboard/CompanyDashboard"
 import Tile from "../../Components/Tile/Tile"
 import Spinner from "../../Components/Spinner/Spinner"
+import CompFinder from "../../Components/CompFinder/CompFinder"
 
 interface Props {}
 
@@ -36,20 +37,24 @@ const CompanyPage = (props: Props) => {
                     <Tile title="Sector" subTitle={company.sector}/>
                     <Tile title="CEO" subTitle={company.ceo}/>
 
-                    <div className="bg-white shadow rounded p-4 mt-1 m-4">
-                        <button
-                            onClick={() => { setShowDescription(prev => !prev) }}
-                            className="text-sm font-medium hover:underline mb-3"
-                        >
-                            {showDescription ? "Hide description ▲" : "Show description ▼"}
-                        </button>
+                      <div className="flex flex-col w-full">
+                          <CompFinder ticker={ticker!} />
 
-                        {showDescription && (
-                            <p className="text-medium text-gray-900">
-                                {company.description}
-                            </p>
-                        )}
-                    </div>
+                          <div className="bg-white shadow rounded p-2 mt-1 m-4 w-full">
+                              <button
+                                  onClick={() => { setShowDescription(prev => !prev) }}
+                                  className="text-sm font-medium hover:underline"
+                              >
+                                  {showDescription ? "Hide description ▲" : "Show description ▼"}
+                              </button>
+
+                              {showDescription && (
+                                  <p className="text-medium text-gray-900">
+                                      {company.description}
+                                  </p>
+                              )}
+                          </div>
+                      </div>
                 </CompanyDashboard>
 
             </div>
