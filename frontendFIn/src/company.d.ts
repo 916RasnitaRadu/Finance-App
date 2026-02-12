@@ -44,7 +44,6 @@ export interface CompanyProfile {
   isActivelyTrading: boolean; 
   isAdr: boolean; 
   isFund: boolean; 
-
 }
 
 export interface CompanyKeyRatios {
@@ -260,45 +259,45 @@ export interface CompanyKeyMetrics {
   tangibleBookValuePerShareTTM: number;
   shareholdersEquityPerShareTTM: number;
   interestDebtPerShareTTM: number;
-  marketCap: number; //
-  enterpriseValueTTM: number; //
-  evToSalesTTM: number; //
+  marketCap: number; 
+  enterpriseValueTTM: number; 
+  evToSalesTTM: number; 
   enterpriseValueOverEBITDATTM: number;
-  evToOperatingCashFlowTTM: number; // 
-  evToFreeCashFlowTTM: number; // 
+  evToOperatingCashFlowTTM: number;  
+  evToFreeCashFlowTTM: number;  
   earningsYieldTTM: number;
-  freeCashFlowToEquityTTM: number; // 
-  netDebtToEBITDATTM: number; // 
-  currentRatioTTM: number; //
+  freeCashFlowToEquityTTM: number;  
+  netDebtToEBITDATTM: number;  
+  currentRatioTTM: number; 
   interestCoverageTTM: number;
-  incomeQualityTTM: number; // 
-  salesGeneralAndAdministrativeToRevenueTTM: number; //
-  researchAndDevelopementToRevenueTTM: number; //
-  intangiblesToTotalAssetsTTM: number; //
-  capexToOperatingCashFlowTTM: number; //
-  capexToRevenueTTM: number; //
-  capexToDepreciationTTM: number; //
-  stockBasedCompensationToRevenueTTM: number; //
-  grahamNumberTTM: number; //
-  returnOnTangibleAssetsTTM: number; //
-  grahamNetNetTTM: number; // 
-  workingCapitalTTM: number; // 
+  incomeQualityTTM: number;  
+  salesGeneralAndAdministrativeToRevenueTTM: number; 
+  researchAndDevelopementToRevenueTTM: number; 
+  intangiblesToTotalAssetsTTM: number; 
+  capexToOperatingCashFlowTTM: number; 
+  capexToRevenueTTM: number; 
+  capexToDepreciationTTM: number; 
+  stockBasedCompensationToRevenueTTM: number; 
+  grahamNumberTTM: number; 
+  returnOnTangibleAssetsTTM: number; 
+  grahamNetNetTTM: number;  
+  workingCapitalTTM: number;  
   tangibleAssetValueTTM: number;
   netCurrentAssetValueTTM: number;
-  investedCapitalTTM: number; // 
-  averageReceivablesTTM: number; //
-  averagePayablesTTM: number; //
-  averageInventoryTTM: number; //
-  daysSalesOutstandingTTM: number; //
-  daysPayablesOutstandingTTM: number; //
-  daysOfInventoryOutstandingTTM: number; //
-  evToEBITDATTM: number; //
-  taxBurdenTTM: number; //
-  interestBurdenTTM: number; //
-  daysOfPayablesOutstandingTTM: number; //
-  freeCashFlowToFirmTTM: number; //
-  operatingReturnOnAssetsTTM: number; //
-  returnOnAssetsTTM: number; //
+  investedCapitalTTM: number;  
+  averageReceivablesTTM: number; 
+  averagePayablesTTM: number; 
+  averageInventoryTTM: number; 
+  daysSalesOutstandingTTM: number; 
+  daysPayablesOutstandingTTM: number; 
+  daysOfInventoryOutstandingTTM: number; 
+  evToEBITDATTM: number; 
+  taxBurdenTTM: number; 
+  interestBurdenTTM: number; 
+  daysOfPayablesOutstandingTTM: number; 
+  freeCashFlowToFirmTTM: number; 
+  operatingReturnOnAssetsTTM: number; 
+  returnOnAssetsTTM: number; 
   returnOnEquityTTM: number;
 }
 
