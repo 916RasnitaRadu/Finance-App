@@ -1,9 +1,8 @@
-﻿using backend.Data;
-using backend.DTOs;
+﻿using backend.DTOs.Stock;
+using backend.Interfaces;
 using backend.Mappers;
-using backend.Models;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
+
 
 namespace backend.Controllers
 {
@@ -11,24 +10,26 @@ namespace backend.Controllers
     [ApiController]
     public class StockController : ControllerBase
     {
-        private readonly ApplicationDbContext _context;
-        public StockController(ApplicationDbContext context)
+        private readonly IStockRepository _stockRepository;
+
+        public StockController(IStockRepository stockRepository)
         {
-            _context = context;
+            _stockRepository = stockRepository;
         }
 
         [HttpGet]
-        public IActionResult GetAll()
+        public async Task<IActionResult> GetAll()
         {
-            var stocks = _context.Stocks.ToList()
-                .Select(s => s.ToStockDto()).ToList();
-            return Ok(stocks);
+            var stocks = await _stockRepository.GetAllAsync();
+            var stocksDto = stocks.Select(s => s.ToStockDto()).ToList();
+
+            return Ok(stocksDto);
         }
 
         [HttpGet("{id}")]
-        public IActionResult GetStock([FromRoute] int id)
+        public async Task<IActionResult> GetStock([FromRoute] int id)
         {
-            var stock = _context.Stocks.Find(id);
+            var stock = await _stockRepository.GetByIdAsync(id);
 
             if (stock == null)
             {
@@ -39,12 +40,11 @@ namespace backend.Controllers
         }
 
         [HttpPost]
-        public IActionResult CreateStock([FromBody] CreateStockRequestDto stockRequest)
+        public async Task<IActionResult> CreateStock([FromBody] UpsertStockRequestDto stockRequest)
         {
             var stockModel = stockRequest.ToStock();
 
-            _context.Stocks.Add(stockModel);
-            _context.SaveChanges();
+            var result = await _stockRepository.CreateAsync(stockModel);
 
             // returns a 201 CREATED code & shows the location where you can find the result
             return CreatedAtAction(
@@ -55,39 +55,27 @@ namespace backend.Controllers
         }
 
         [HttpPut("{id}")]
-        public IActionResult UpdateStock([FromRoute] int id, [FromBody] CreateStockRequestDto stockRequest)
+        public async Task<IActionResult> UpdateStock([FromRoute] int id, [FromBody] UpsertStockRequestDto stockRequest)
         {
-            var stockModel = _context.Stocks.FirstOrDefault(x => x.Id == id);
+            var stockModel = await _stockRepository.UpdateAsync(id, stockRequest);
 
             if (stockModel == null)
             {
                 return NotFound();
             }
-
-            stockModel.CompanyName = stockRequest.CompanyName;
-            stockModel.Purchase = stockRequest.Purchase;
-            stockModel.Symbol = stockRequest.Symbol;
-            stockModel.Industry = stockRequest.Industry;
-            stockModel.LastDiv = stockRequest.LastDiv;
-            stockModel.MarketCap = stockRequest.MarketCap;
-
-            _context.SaveChanges();
 
             return Ok(stockModel.ToStockDto());
         }
 
         [HttpDelete("{id}")]
-        public IActionResult DeleteStock([FromRoute] int id)
+        public async Task<IActionResult> DeleteStock([FromRoute] int id)
         {
-            var stockModel = _context.Stocks.FirstOrDefault(x => x.Id == id);
+            var stockModel = await _stockRepository.DeleteAsync(id);
             
             if (stockModel == null)
             {
                 return NotFound();
             }
-
-            _context.Stocks.Remove(stockModel);
-            _context.SaveChanges();
 
             return NoContent();
         }

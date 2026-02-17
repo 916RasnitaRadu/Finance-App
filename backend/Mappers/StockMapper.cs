@@ -1,6 +1,5 @@
-﻿using backend.DTOs;
+﻿using backend.DTOs.Stock;
 using backend.Models;
-using System.Collections;
 
 namespace backend.Mappers
 {
@@ -16,11 +15,12 @@ namespace backend.Mappers
                 Purchase = stock.Purchase,
                 LastDiv = stock.LastDiv,
                 Industry = stock.Industry,
-                MarketCap = stock.MarketCap
+                MarketCap = stock.MarketCap,
+                Comments = stock.Comments.Select(c => c.ToCommentDto()).ToList()
             };
         }
 
-        public static Stock ToStock(this CreateStockRequestDto stockRequest)
+        public static Stock ToStock(this UpsertStockRequestDto stockRequest)
         {
             return new Stock
             {

@@ -1,6 +1,7 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
+﻿using backend.DTOs.Comment;
+using System.ComponentModel.DataAnnotations.Schema;
 
-namespace backend.DTOs
+namespace backend.DTOs.Stock
 {
     public class StockDto
     {
@@ -11,6 +12,7 @@ namespace backend.DTOs
         public decimal LastDiv { get; set; }
         public string Industry { get; set; } = string.Empty;
         public long MarketCap { get; set; }
+        public List<CommentDto> Comments { get; set; }
 
     }
 }

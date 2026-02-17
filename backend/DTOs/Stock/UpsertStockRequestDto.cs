@@ -1,6 +1,6 @@
-﻿namespace backend.DTOs
+﻿namespace backend.DTOs.Stock
 {
-    public class CreateStockRequestDto
+    public class UpsertStockRequestDto
     {
         public string Symbol { get; set; } = string.Empty;
         public string CompanyName { get; set; } = string.Empty;
