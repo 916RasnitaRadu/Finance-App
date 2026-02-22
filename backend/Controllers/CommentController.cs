@@ -52,7 +52,7 @@ namespace backend.Controllers
         }
 
         [HttpPost("{stockId:int}")]
-        public async Task<IActionResult> CreateComment([FromRoute] int stockId, [FromBody] UpsertCommentDto commentDto)
+        public async Task<IActionResult> CreateComment([FromRoute] int stockId, [FromBody] InsertCommentDto commentDto)
         {
             if (!ModelState.IsValid)
             {
@@ -84,6 +84,19 @@ namespace backend.Controllers
 
             var comment = await _commentRepository.DeleteAsync(id);
             return NoContent();
+        }
+
+        [HttpPut("{id:int}")]
+        public async Task<IActionResult> UpdateComment([FromRoute] int id, [FromBody] UpdateCommentDto commentDto)
+        {
+            var comment = await _commentRepository.UpdateAsync(id, commentDto.ToComment());
+
+            if (comment == null)
+            {
+                return NotFound("Comment not found");
+            }
+
+            return Ok(comment.ToCommentDto());
         }
     }
 }

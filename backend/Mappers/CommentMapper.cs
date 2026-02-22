@@ -16,13 +16,22 @@ namespace backend.Mappers
             };
         }
 
-        public static Comment ToComment(this UpsertCommentDto commentDto, int stockId)
+        public static Comment ToComment(this InsertCommentDto commentDto, int stockId)
         {
             return new Comment
             {
                 Title = commentDto.Title,
                 Content = commentDto.Content,
                 StockId = stockId,
+            };
+        }
+
+        public static Comment ToComment(this UpdateCommentDto commentDto)
+        {
+            return new Comment
+            {
+                Title = commentDto.Title,
+                Content = commentDto.Content
             };
         }
     }
